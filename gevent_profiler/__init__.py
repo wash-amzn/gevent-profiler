@@ -247,11 +247,11 @@ def _print_output(duration):
 		output.append(col_data)
 
 	# max widths
-	widths = [max([len(row[x]) for row in output]) for x in xrange(len(output[0]))]
+	widths = [max([len(row[x]) for row in output]) for x in range(len(output[0]))]
 	# build row strings
 	fmt_out = [" ".join([x.ljust(widths[i]) for i, x in enumerate(row)]) for row in output]
 	# insert col separation row
-	fmt_out.insert(1, " ".join([''.ljust(widths[i], '=') for i in xrange(len(widths))]))
+	fmt_out.insert(1, " ".join([''.ljust(widths[i], '=') for i in range(len(widths))]))
 	# write them!
 	map(lambda x: _maybe_write(_stats_output_file, "%s\n" % x), fmt_out)
 
