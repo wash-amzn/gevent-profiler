@@ -253,7 +253,7 @@ def _print_output(duration):
 	# insert col separation row
 	fmt_out.insert(1, " ".join([''.ljust(widths[i], '=') for i in range(len(widths))]))
 	# write them!
-	map(lambda x: _maybe_write(_stats_output_file, "%s\n" % x), fmt_out)
+	[_maybe_write(_stats_output_file, "%s\n" % x) for x in fmt_out]
 
 	_maybe_flush(_stats_output_file)
 
