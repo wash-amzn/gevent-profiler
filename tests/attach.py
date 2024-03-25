@@ -22,7 +22,7 @@ def task():
 	time.sleep(3)
 	eat_up_cpu()
 	eat_up_some_more_cpu()
-	print "hi!"
+	print("hi!")
 
 def main():
 	monkey.patch_all()

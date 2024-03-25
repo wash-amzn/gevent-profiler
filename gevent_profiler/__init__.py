@@ -413,7 +413,7 @@ if __name__ == "__main__":
 	if options.blocking is not None:
 		time_blocking()
 	if len(args) < 1:
-		print "what file should i be profiling?"
+		print("what file should i be profiling?")
 		sys.exit(1)
 	file = args[0]
 
