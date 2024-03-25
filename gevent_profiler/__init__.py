@@ -19,6 +19,7 @@ _trace_output_file = sys.stdout
 
 _print_percentages = False
 _time_blocking = False
+_sort_by = "cumulative"
 
 _attach_expiration = None
 
@@ -219,8 +220,8 @@ def _print_output(duration):
 	call_list = []
 	for name in call_summaries:
 		cs = call_summaries[name]
-		call_list.append( (cs.cumulative, cs) )
-	call_list.sort(reverse=True, key=lambda s: s[0])
+		call_list.append(cs)
+	call_list.sort(reverse=True, key=lambda s: getattr(s, _sort_by))
 
 	output = []
 
@@ -228,7 +229,7 @@ def _print_output(duration):
 
 	output.append(col_names)
 
-	for _,c in call_list:
+	for c in call_list:
 		cumulative = c.cumulative
 		own_cumulative = c.own_cumulative
 		children_cumulative = c.children_cumulative
@@ -360,6 +361,10 @@ def time_blocking(enabled=True):
 	"""
 	global _time_blocking
 	_time_blocking = enabled
+
+def sort_by(property):
+	global _sort_by
+	_sort_by = property
 
 def set_attach_duration(attach_duration=60):
 	"""
