@@ -220,7 +220,7 @@ def _print_output(duration):
 	for name in call_summaries:
 		cs = call_summaries[name]
 		call_list.append( (cs.cumulative, cs) )
-	call_list.sort(reverse=True)
+	call_list.sort(reverse=True, key=lambda s: s[0])
 
 	output = []
 
